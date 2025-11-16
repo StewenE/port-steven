@@ -1,14 +1,14 @@
 @import "tailwindcss";
 
 @theme {
-  --color-border: hsl(var(--border));
-  --color-background: hsl(var(--background));
-  --color-foreground: hsl(var(--foreground));
+  --color-border: var(--border);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
 
-  --color-primary: hsl(var(--primary));
-  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
 
-  --color-card: hsl(var(--card));
+  --color-card: var(--card);
 
   --animate-fade-in: fade-in 0.7s ease-out forwards; 
   --animate-fade-in-delay-1: fade-in 0.7s ease-out 0.2s forwards;
@@ -30,27 +30,27 @@
 
 @layer base {
   :root {
-    --background: 210 40% 98%;
-    --foreground: 222 47% 11%;
+    --background: #eeeeee;
+    --foreground: #383838;
 
-    --card: 0 0% 100%;
+    --card: #aeaeae;
 
-    --primary: 250 47% 60%;
-    --primary-foreground: 210 40% 98%;
+    --primary: #5c5c5c;
+    --primary-foreground: #eeeeee;
 
-    --border: 214 32% 91%;
+    --border: #909090;
   }
 
   .dark {
-    --background: 222 47% 4%;
-    --foreground: 213 31% 91%;
+    --background: #383838;
+    --foreground: #eeeeee;
 
-    --card: 222 47% 8%;
+    --card: #5c5c5c;
 
-    --primary: 250 65% 65%;
-    --primary-foreground: 213 31% 91%;
+    --primary: #aeaeae;
+    --primary-foreground: #383838;
 
-    --border: 217 33% 20%;
+    --border: #909090;
   }
 
   * {
@@ -63,7 +63,12 @@
 
   body {
     @apply bg-background text-foreground transition-colors duration-300;
+    font-family: 'BodyFont', sans-serif;
     font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'TitleFont', sans-serif;
   }
 }
 
@@ -86,11 +91,20 @@
   @media (width >= 1400px) {
     max-width: 1400px;
   }
+  @media (width >= 1600px) {
+    max-width: 1600px;
+  }
+  @media (width >= 1920px) {
+    max-width: 1920px;
+  }
+  @media (width >= 2048px) {
+    max-width: 2048px;
+  }
 }
 
 @utility text-glow {
   @apply relative;
-  text-shadow: 0 0 10px rgba(168, 139, 250, 0.5);
+  text-shadow: 0 0 10px rgba(174, 174, 174, 0.5);
 }
 
 @utility card-hover {
@@ -106,8 +120,12 @@
 
 @utility button {
   @apply px-6 py-2 rounded-full bg-primary text-primary-foreground font-medium
-         transition-all duration-300 hover:shadow-[0_4px_15px_rgba(168,139,250,0.3)]
+         transition-all duration-300 hover:shadow-[0_4px_15px_rgba(174,174,174,0.3)]
          hover:scale-105 active:scale-95;
+}
+
+@utility title-font {
+  font-family: 'DataFont', sans-serif;
 }
 
 #root {
@@ -115,4 +133,25 @@
   margin: 0 auto;
   padding: 0;
   text-align: center;
+}
+
+@font-face {
+  font-family: 'DataFont';
+  src: url('./assets/fonts/GoogleSansCode-SemiBold.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'TitleFont';
+  src: url('./assets/fonts/Sora-Bold.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'BodyFont';
+  src: url('./assets/fonts/Sora-Medium.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
 }
