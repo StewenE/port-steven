@@ -23,7 +23,7 @@ export const SidePanel = ({ activeSection, onNavigate }: SidePanelProps) => {
               key={key} 
               onClick={() => onNavigate(item.id)}
               className={cn(
-                "nav-item text-left transition-all duration-300 hover:translate-x-1 transform",
+                "nav-item text-left",
                 activeSection === item.id && "nav-item-active"
               )}
             >

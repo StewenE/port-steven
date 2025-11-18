@@ -34,7 +34,7 @@
 
 @layer base {
   :root {
-    --background: #eeeeee;
+    --background: #ffffe4;
     --foreground: #383838;
 
     --card: #aeaeae;
@@ -42,17 +42,24 @@
     --primary: #5c5c5c;
     --primary-foreground: #eeeeee;
 
+    --top-bar-bg: #fafae7;
+
     --border: #909090;
   }
 
   .dark {
     --background: #383838;
-    --foreground: #eeeeee;
+    --foreground: #ffffff;
 
     --card: #5c5c5c;
 
     --primary: #aeaeae;
     --primary-foreground: #383838;
+
+    --hover-text: #ffffff;
+    --active-text: #ffffffd0;
+
+    --top-bar-bg: #00000057;
 
     --border: #909090;
   }
@@ -78,7 +85,6 @@
 }
 
 :root {
-  /* min 250px, ~1/8 of viewport, max 320px (adjust as needed) */
   --side-panel-width: clamp(250px, 12.5vw, 320px);
   --nav-height: 4rem;
 }
@@ -152,12 +158,26 @@
 }
 
 @utility nav-item {
-  @apply text-foreground/80 hover:text-primary transition-colors duration-300;
+  @apply text-foreground/80 transition-all duration-300;
+  
+  &:hover {
+    @apply translate-x-1;
+    color: var(--hover-text);
+    background-color: var(--card);
+    border-radius: 10px;
+    padding: 0.25rem 0.5rem;
+    cursor: pointer
+  }
 }
 
 @utility nav-item-active {
-  @apply text-primary font-semibold;
+  @apply font-semibold transform transition duration-300;
+  color: var(--active-text);
+  background-color: var(--card);
+  border-radius: 10px;
+  padding: 0.25rem 0.5rem;
 }
+
 
 @utility mobile-menu {
   @apply fixed inset-0 bg-background/95 backdrop-blur-md z-40 flex flex-col items-center justify-center transition-all duration-300;
