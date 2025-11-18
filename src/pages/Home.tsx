@@ -46,7 +46,7 @@ export const Home = () => {
                         activeSection={activeSection} 
                         onNavigate={handleNavigate}
                     />
-                    <div className="relative h-[calc(100vh-var(--nav-height))] overflow-y-auto pt-8 lg:pt-0">
+                    <div className="relative h-[calc(100vh-var(--nav-height))] custom-scroll overflow-y-auto pt-8 lg:pt-0">
                         <div
                           aria-hidden
                           className="pointer-events-none absolute inset-y-0 right-0 w-0 lg:border-r border-border z-10"

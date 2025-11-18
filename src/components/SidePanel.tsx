@@ -15,7 +15,7 @@ interface SidePanelProps {
 
 export const SidePanel = ({ activeSection, onNavigate }: SidePanelProps) => {
     return (
-      <aside className="hidden lg:block sticky top-(--nav-height) min-h-100 border-l border-r border-border p-8">
+      <aside className="hidden lg:block sticky top-(--nav-height) min-h-100 border-l border-r border-border p-8 bg-(--top-bar-bg)">
         <div className="mb-6 text-lg font-semibold">navigation</div>
         <nav className="flex flex-col space-y-4 text-left">
           {navItems.map((item, key) => (
