@@ -1,6 +1,5 @@
 import { useEffect,useState } from 'react';
 import { Sun, Moon } from 'lucide-react';
-import { cn } from '@/lib/utils';
 
 export const ThemeToggle = () => {
     const [isDarkMode, setIsDarkMode] = useState(() => {
@@ -24,12 +23,12 @@ export const ThemeToggle = () => {
         });
     }
 
-    return (<button 
-                onClick={toggleTheme} 
-                className={cn(
-                    "max-sm:hidden z-50 rounded-full transition-colors duration-300",
-                    "focus:outline-hidden"
-                    )}>
-                {isDarkMode ? <Sun className="h-6 w-6 text-yellow-300" /> : <Moon className="h-6 w-6 text-blue-900"/>}
-            </button>) 
+    return (
+        <button 
+            onClick={toggleTheme} 
+            className="z-50 rounded-full transition-colors duration-300 lg:mr-2 focus:outline-hidden"
+        >
+            {isDarkMode ? <Sun className="h-6 w-6 text-yellow-300" /> : <Moon className="h-6 w-6 text-blue-900"/>}
+        </button>
+    ) 
 }

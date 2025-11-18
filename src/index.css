@@ -26,6 +26,10 @@
       transform: translateY(0);
     }
   }
+  @keyframes blink {
+    0%, 49% { opacity: 1; }
+    50%, 100% { opacity: 0; }
+  }
 }
 
 @layer base {
@@ -63,6 +67,7 @@
 
   body {
     @apply bg-background text-foreground transition-colors duration-300;
+    overflow-y: hidden;
     font-family: 'BodyFont', sans-serif;
     font-feature-settings: "rlig" 1, "calt" 1;
   }
@@ -72,9 +77,25 @@
   }
 }
 
+:root {
+  /* min 250px, ~1/8 of viewport, max 320px (adjust as needed) */
+  --side-panel-width: clamp(250px, 12.5vw, 320px);
+  --nav-height: 4rem;
+}
+
+@layer utilities {
+  .side-panel-w {
+    width: var(--side-panel-width);
+    min-width: var(--side-panel-width);
+  }
+}
+
+
 @utility container {
+  --container-x: 1rem;
+  width: 100%;
   margin-inline: auto;
-  padding-inline: 2rem;
+  padding-inline: var(--container-x);
 
   @media (width >= 640px) {
     max-width: 640px;
@@ -83,6 +104,8 @@
     max-width: 768px;
   }
   @media (width >= 1024px) {
+    width: 80%;
+    --container-x: 0rem;
     max-width: 1024px;
   }
   @media (width >= 1280px) {
@@ -128,11 +151,22 @@
   font-family: 'DataFont', sans-serif;
 }
 
+@utility nav-item {
+  @apply text-foreground/80 hover:text-primary transition-colors duration-300;
+}
+
+@utility nav-item-active {
+  @apply text-primary font-semibold;
+}
+
+@utility mobile-menu {
+  @apply fixed inset-0 bg-background/95 backdrop-blur-md z-40 flex flex-col items-center justify-center transition-all duration-300;
+}
+
 #root {
   max-width: 100%;
   margin: 0 auto;
   padding: 0;
-  text-align: center;
 }
 
 @font-face {
@@ -154,4 +188,8 @@
   src: url('./assets/fonts/Sora-Medium.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
+}
+
+.animate-blink {
+  animation: blink 1s infinite;
 }
