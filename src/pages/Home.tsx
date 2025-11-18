@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { TopBar } from "@/components/TopBar";
 import { SidePanel } from "@/components/SidePanel";
+import { NavigationButtons } from "@/components/NavigationButtons";
 import { HomeSection } from "@/components/sections/HomeSection";
 import { AboutSection } from "@/components/sections/AboutSection";
 import { SkillsSection } from "@/components/sections/SkillsSection";
@@ -44,7 +45,13 @@ export const Home = () => {
                           aria-hidden
                           className="pointer-events-none absolute inset-y-0 right-0 w-0 lg:border-r border-border z-10"
                         />
-                        {renderSection()}
+                        <div>
+                            {renderSection()}
+                            <NavigationButtons 
+                                activeSection={activeSection}
+                                onNavigate={setActiveSection}
+                            />
+                        </div>
                     </div>
                 </div>
             </div>

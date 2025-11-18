@@ -170,6 +170,18 @@
   }
 }
 
+@utility nav-button {
+  @apply text-foreground/80 transition-all duration-300 flex items-center gap-2 px-4 py-2 rounded-md;
+  
+  &:hover {
+    @apply -translate-y-1;
+    color: var(--hover-text);
+    background-color: var(--card);
+    border-radius: 10px;
+    cursor: pointer;
+  }
+}
+
 @utility nav-item-active {
   @apply font-semibold transform transition duration-300;
   color: var(--active-text);
