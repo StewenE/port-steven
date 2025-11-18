@@ -7,8 +7,8 @@ export const SkillsSection = () => {
 
     return (
       <section className="p-4 md:p-6 lg:p-8">
-        <h1 className="text-4xl font-bold mb-6">Skills</h1>
-        <div className="space-y-6">
+        <h1 className="text-4xl font-bold mb-6 opacity-0 animate-fade-in">Skills</h1>
+        <div className="space-y-6 opacity-0 animate-fade-in-delay-1">
           {skills.map((skillGroup, index) => (
             <div key={index}>
               <h2 className="text-2xl font-semibold mb-3">{skillGroup.category}</h2>

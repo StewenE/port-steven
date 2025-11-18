@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { TopBar } from "@/components/TopBar";
 import { SidePanel } from "@/components/SidePanel";
 import { NavigationButtons } from "@/components/NavigationButtons";
@@ -10,6 +10,24 @@ import { ContactSection } from "@/components/sections/ContactSection";
 
 export const Home = () => {
     const [activeSection, setActiveSection] = useState("home");
+    const [themeKey, setThemeKey] = useState(0);
+
+    useEffect(() => {
+        const observer = new MutationObserver((mutations) => {
+            mutations.forEach((mutation) => {
+                if (mutation.attributeName === "class") {
+                    setThemeKey(prev => prev + 1);
+                }
+            });
+        });
+
+        observer.observe(document.documentElement, {
+            attributes: true,
+            attributeFilter: ["class"]
+        });
+
+        return () => observer.disconnect();
+    }, []);
 
     const renderSection = () => {
         switch (activeSection) {
@@ -45,7 +63,7 @@ export const Home = () => {
                           aria-hidden
                           className="pointer-events-none absolute inset-y-0 right-0 w-0 lg:border-r border-border z-10"
                         />
-                        <div>
+                        <div key={`${activeSection}-${themeKey}`}>
                             {renderSection()}
                             <NavigationButtons 
                                 activeSection={activeSection}

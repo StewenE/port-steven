@@ -19,8 +19,8 @@ export const ProjectsSection = () => {
 
     return (
       <section className="p-4 md:p-6 lg:p-8">
-        <h1 className="text-4xl font-bold mb-6">Projects</h1>
-        <div className="space-y-6">
+        <h1 className="text-4xl font-bold mb-6 opacity-0 animate-fade-in">Projects</h1>
+        <div className="space-y-6 opacity-0 animate-fade-in-delay-1">
           {projects.map((project, index) => (
             <div key={index} className="border border-border rounded-lg p-6">
               <h2 className="text-2xl font-semibold mb-2">{project.title}</h2>
