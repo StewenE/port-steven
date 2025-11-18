@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { TopBar } from "@/components/TopBar";
 import { SidePanel } from "@/components/SidePanel";
 import { NavigationButtons } from "@/components/NavigationButtons";
@@ -10,24 +10,12 @@ import { ContactSection } from "@/components/sections/ContactSection";
 
 export const Home = () => {
     const [activeSection, setActiveSection] = useState("home");
-    const [themeKey, setThemeKey] = useState(0);
+    const [isProjectSelected, setIsProjectSelected] = useState(false);
 
-    useEffect(() => {
-        const observer = new MutationObserver((mutations) => {
-            mutations.forEach((mutation) => {
-                if (mutation.attributeName === "class") {
-                    setThemeKey(prev => prev + 1);
-                }
-            });
-        });
-
-        observer.observe(document.documentElement, {
-            attributes: true,
-            attributeFilter: ["class"]
-        });
-
-        return () => observer.disconnect();
-    }, []);
+    const handleNavigate = (section: string) => {
+        setActiveSection(section);
+        setIsProjectSelected(false);
+    };
 
     const renderSection = () => {
         switch (activeSection) {
@@ -38,7 +26,7 @@ export const Home = () => {
             case "skills":
                 return <SkillsSection />;
             case "projects":
-                return <ProjectsSection />;
+                return <ProjectsSection onProjectSelect={setIsProjectSelected} />;
             case "contact":
                 return <ContactSection />;
             default:
@@ -50,25 +38,27 @@ export const Home = () => {
         <div className="min-h-1000 bg-background text-foreground overflow-x-hidden ">
             <TopBar 
                 activeSection={activeSection}
-                onNavigate={setActiveSection}
+                onNavigate={handleNavigate}
             />
             <div className="container pt-(--nav-height) lg:pt-(--nav-height)">
                 <div className="grid grid-cols-1 lg:grid-cols-[var(--side-panel-width)_1fr] gap-0">
                     <SidePanel 
                         activeSection={activeSection} 
-                        onNavigate={setActiveSection}
+                        onNavigate={handleNavigate}
                     />
                     <div className="relative h-[calc(100vh-var(--nav-height))] overflow-y-auto pt-8 lg:pt-0">
                         <div
                           aria-hidden
                           className="pointer-events-none absolute inset-y-0 right-0 w-0 lg:border-r border-border z-10"
                         />
-                        <div key={`${activeSection}-${themeKey}`}>
+                        <div key={activeSection}>
                             {renderSection()}
-                            <NavigationButtons 
-                                activeSection={activeSection}
-                                onNavigate={setActiveSection}
-                            />
+                            {!isProjectSelected && (
+                                <NavigationButtons 
+                                    activeSection={activeSection}
+                                    onNavigate={handleNavigate}
+                                />
+                            )}
                         </div>
                     </div>
                 </div>
