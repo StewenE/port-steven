@@ -33,13 +33,13 @@ export const Home = () => {
                 activeSection={activeSection}
                 onNavigate={setActiveSection}
             />
-            <div className="container pt-(--nav-height)">
+            <div className="container pt-(--nav-height) lg:pt-(--nav-height)">
                 <div className="grid grid-cols-1 lg:grid-cols-[var(--side-panel-width)_1fr] gap-0">
                     <SidePanel 
                         activeSection={activeSection} 
                         onNavigate={setActiveSection}
                     />
-                    <div className="relative h-[calc(100vh-var(--nav-height))] overflow-y-auto">
+                    <div className="relative h-[calc(100vh-var(--nav-height))] overflow-y-auto pt-8 lg:pt-0">
                         <div
                           aria-hidden
                           className="pointer-events-none absolute inset-y-0 right-0 w-0 lg:border-r border-border z-10"

@@ -52,7 +52,7 @@ export const TopBar = ({ activeSection, onNavigate }: TopBarProps) => {
                 </button>
             </div>
             
-            <div className="hidden md:flex items-center space-x-8 ">
+            <div className="hidden lg:flex items-center space-x-8 ">
                 <ThemeToggle />
             </div>
 
