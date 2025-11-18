@@ -1,11 +1,11 @@
 export const ContactSection = () => {
     return (
       <section className="p-4 md:p-6 lg:p-8">
-        <h1 className="text-4xl font-bold mb-6">Contact</h1>
-        <p className="text-lg mb-6">
+        <h1 className="text-4xl font-bold mb-6 opacity-0 animate-fade-in">Contact</h1>
+        <p className="text-lg mb-6 opacity-0 animate-fade-in-delay-1">
           Get in touch msg...
         </p>
-        <div className="space-y-4">
+        <div className="space-y-4 opacity-0 animate-fade-in-delay-2">
           <div>
             <h3 className="text-xl font-semibold mb-2">Email</h3>
             <p className="text-foreground/80">...</p>

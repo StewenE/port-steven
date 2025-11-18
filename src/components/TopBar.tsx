@@ -32,7 +32,7 @@ export const TopBar = ({ activeSection, onNavigate }: TopBarProps) => {
         ref={navRef}
         className={cn(
         "fixed w-full z-40 transition-all duration-300 min-h-4rem",
-        "border-b border-border",
+        "border-b border-border bg-(--top-bar-bg)",
         "py-(--nav-vpad)"
       )}
       style={{ "--nav-vpad": "1.25rem" } as CSSProperties}
@@ -52,7 +52,7 @@ export const TopBar = ({ activeSection, onNavigate }: TopBarProps) => {
                 </button>
             </div>
             
-            <div className="hidden md:flex items-center space-x-8 ">
+            <div className="hidden lg:flex items-center space-x-8 ">
                 <ThemeToggle />
             </div>
 

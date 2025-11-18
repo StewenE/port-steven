@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { TopBar } from "@/components/TopBar";
 import { SidePanel } from "@/components/SidePanel";
+import { NavigationButtons } from "@/components/NavigationButtons";
 import { HomeSection } from "@/components/sections/HomeSection";
 import { AboutSection } from "@/components/sections/AboutSection";
 import { SkillsSection } from "@/components/sections/SkillsSection";
@@ -9,6 +10,24 @@ import { ContactSection } from "@/components/sections/ContactSection";
 
 export const Home = () => {
     const [activeSection, setActiveSection] = useState("home");
+    const [themeKey, setThemeKey] = useState(0);
+
+    useEffect(() => {
+        const observer = new MutationObserver((mutations) => {
+            mutations.forEach((mutation) => {
+                if (mutation.attributeName === "class") {
+                    setThemeKey(prev => prev + 1);
+                }
+            });
+        });
+
+        observer.observe(document.documentElement, {
+            attributes: true,
+            attributeFilter: ["class"]
+        });
+
+        return () => observer.disconnect();
+    }, []);
 
     const renderSection = () => {
         switch (activeSection) {
@@ -33,18 +52,24 @@ export const Home = () => {
                 activeSection={activeSection}
                 onNavigate={setActiveSection}
             />
-            <div className="container pt-(--nav-height)">
+            <div className="container pt-(--nav-height) lg:pt-(--nav-height)">
                 <div className="grid grid-cols-1 lg:grid-cols-[var(--side-panel-width)_1fr] gap-0">
                     <SidePanel 
                         activeSection={activeSection} 
                         onNavigate={setActiveSection}
                     />
-                    <div className="relative h-[calc(100vh-var(--nav-height))] overflow-y-auto">
+                    <div className="relative h-[calc(100vh-var(--nav-height))] overflow-y-auto pt-8 lg:pt-0">
                         <div
                           aria-hidden
                           className="pointer-events-none absolute inset-y-0 right-0 w-0 lg:border-r border-border z-10"
                         />
-                        {renderSection()}
+                        <div key={`${activeSection}-${themeKey}`}>
+                            {renderSection()}
+                            <NavigationButtons 
+                                activeSection={activeSection}
+                                onNavigate={setActiveSection}
+                            />
+                        </div>
                     </div>
                 </div>
             </div>
