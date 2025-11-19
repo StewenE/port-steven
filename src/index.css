@@ -136,14 +136,14 @@
   }
   @media (width >= 1024px) {
     width: 80%;
-    --container-x: 0rem;
-    max-width: 1024px;
+    --container-x: 1.5rem;
+    max-width: min(1200px, calc(100vw - 2rem));
   }
   @media (width >= 1280px) {
-    max-width: 1280px;
+    max-width: min(1400px, calc(100vw - 2rem));
   }
   @media (width >= 1400px) {
-    max-width: 1400px;
+    max-width: min(1500px, calc(100vw - 2rem));
   }
   @media (width >= 1600px) {
     max-width: 1600px;

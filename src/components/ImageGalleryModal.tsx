@@ -50,11 +50,11 @@ export const ImageGalleryModal = ({ isOpen, onClose, images, title }: ImageGalle
 
   return (
     <div 
-      className="fixed inset-0 z-50 flex items-center justify-center bg-background/95 backdrop-blur-sm animate-fade-in p-2 md:p-6 mt-4"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-background/95 backdrop-blur-sm animate-fade-in p-4 sm:p-6"
       onClick={onClose}
     >
       <div 
-        className="w-full max-w-[1600px] flex items-center justify-center gap-4"
+        className="w-full max-w-[calc(100vw-2rem)] sm:max-w-[calc(100vw-4rem)] lg:max-w-[1200px] xl:max-w-[1600px] flex items-center justify-center gap-4"
         onClick={(e) => e.stopPropagation()}
       >
 
@@ -91,7 +91,7 @@ export const ImageGalleryModal = ({ isOpen, onClose, images, title }: ImageGalle
                 </button>
             </div>
 
-            <div className="relative flex items-center justify-center rounded-lg overflow-hidden bg-black/5 shadow-2xl">
+            <div className="relative flex items-center justify-center rounded-lg overflow-hidden bg-black/5 shadow-2xl max-h-[85vh]">
                 {images.length > 1 && (
                     <>
                         <button onClick={prevImage} className="md:hidden absolute left-2 z-10 p-2 rounded-full bg-background/50 backdrop-blur-md text-foreground shadow-lg">
@@ -103,10 +103,10 @@ export const ImageGalleryModal = ({ isOpen, onClose, images, title }: ImageGalle
                     </>
                 )}
 
-                <img 
-                  src={images[currentIndex].src} 
-                  alt={`Project screenshot ${currentIndex + 1}`} 
-                  className="max-h-[85vh] w-auto max-w-full object-contain"
+                <img
+                  src={images[currentIndex].src}
+                  alt={`Project screenshot ${currentIndex + 1}`}
+                  className="h-full w-auto max-h-[70vh] max-w-full object-contain"
                 />
             </div>
 
