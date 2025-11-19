@@ -50,7 +50,7 @@ export const ImageGalleryModal = ({ isOpen, onClose, images, title }: ImageGalle
 
   return (
     <div 
-      className="fixed inset-0 z-50 flex items-center justify-center bg-background/95 backdrop-blur-sm animate-fade-in p-2 md:p-6"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-background/95 backdrop-blur-sm animate-fade-in p-2 md:p-6 mt-4"
       onClick={onClose}
     >
       <div 
@@ -62,7 +62,7 @@ export const ImageGalleryModal = ({ isOpen, onClose, images, title }: ImageGalle
             {images.length > 1 ? (
                 <button 
                     onClick={prevImage}
-                    className="p-1 rounded-full transition-all text-foreground/70 hover:text-accent hover:bg-secondary/50"
+                    className="p-1 rounded-full transition-all text-foreground/70 hover:text-accent hover:bg-primary/20"
                     aria-label="Previous image"
                 >
                     <ChevronLeft size={42} /> 
@@ -131,7 +131,7 @@ export const ImageGalleryModal = ({ isOpen, onClose, images, title }: ImageGalle
             {images.length > 1 ? (
                 <button 
                     onClick={nextImage}
-                    className="p-1 rounded-full transition-all text-foreground/70 hover:text-accent hover:bg-secondary/50"
+                    className="p-1 rounded-full transition-all text-foreground/70 hover:text-accent hover:bg-primary/20"
                     aria-label="Next image"
                 >
                     <ChevronRight size={42} />

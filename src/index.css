@@ -50,8 +50,10 @@
     --secondary: #e8e8cf;
     --secondary-foreground: #383838;
 
-    --accent: #006d77;
+    --accent: #383838;
     --accent-foreground: #ffffff;
+
+    --blue-accent: #006d77;
 
     --top-bar-bg: #fafae7;
 
@@ -74,8 +76,10 @@
     --secondary: #4a4a4a;
     --secondary-foreground: #ffffff;
 
-    --accent: #4fd1c5;
+    --accent: #dadada;
     --accent-foreground: #383838;
+
+    --blue-accent: #4fd1c5;
 
     --hover-text: #ffffff;
     --active-text: #ffffffd0;
@@ -211,6 +215,18 @@
   padding: 0.25rem 0.5rem;
 }
 
+@utility gallery-button {
+  @apply bg-(--blue-accent)/30 text-foreground hover:bg-(--blue-accent)/60 transition-all duration-300 flex items-center gap-2 px-3 py-1;
+  border: 0.13rem solid var(--blue-accent);
+  border-radius: 0.13rem;
+  
+  &:hover {
+    color: var(--hover-text);
+    border-radius: 10px;
+    cursor: pointer;
+  }
+}
+
 
 @utility mobile-menu {
   @apply fixed inset-0 bg-background/95 backdrop-blur-md z-40 flex flex-col items-center justify-center transition-all duration-300;
@@ -223,7 +239,9 @@
 
 
 @utility tech-badge{
-  @apply px-3 py-1 bg-accent/10 text-accent border border-accent rounded-full font-bold hover:bg-accent/20 hover:-translate-y-0.5 transition-colors select-none;
+  @apply px-3 py-1 bg-accent/10 text-accent font-bold hover:bg-accent/20 hover:-translate-y-0.5 transition-colors select-none;
+  border: 0.13rem solid var(--accent);
+  border-radius: 4px;
 }
 
 #root {

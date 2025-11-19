@@ -159,7 +159,7 @@ export const ProjectsSection = ({ onProjectSelect }: { onProjectSelect?: (isSele
                             <h3 className="text-xl font-semibold mb-3">Resources</h3>
                             <ul className="list-disc list-inside space-y-2 text-foreground/90">
                                 {selectedProject.links.map((link, idx) => (
-                                    <li key={idx}>
+                                    <div key={idx}>
                                         {link.type === 'link' && (
                                             <a href={link.url} target="_blank" rel="noreferrer" className="text-accent hover:underline">
                                                 {link.label}
@@ -175,12 +175,12 @@ export const ProjectsSection = ({ onProjectSelect }: { onProjectSelect?: (isSele
                                         {link.type === 'button' && (
                                             <button 
                                                 onClick={() => handleLinkAction(link.action, selectedProject)}
-                                                className="text-primary hover:text-primary/80 underline decoration-dotted cursor-pointer text-left"
+                                                className="gallery-button"
                                             >
                                                 {link.label}
                                             </button>
                                         )}
-                                    </li>
+                                    </div>
                                 ))}
                             </ul>
                         </div>
