@@ -1,6 +1,36 @@
 import { useState } from "react";
 import { ChevronLeft } from "lucide-react";
+import { arvexDesc } from "@/data/descriptions/arveX.ts";
+import { rpTimetableDesc } from "@/data/descriptions/rpTimetable.ts";
+import { ImageGalleryModal } from "@/components/ImageGalleryModal";
+import type { GalleryImage } from "@/components/ImageGalleryModal";
 
+import addCompany from "@/assets/screenshots/arvex/add-company.png";
+import addProduct from "@/assets/screenshots/arvex/add-product.png";
+import companyView from "@/assets/screenshots/arvex/company-view.png";
+import createInvoice1 from "@/assets/screenshots/arvex/create-invoice-1.png";
+import createInvoice2 from "@/assets/screenshots/arvex/create-invoice-2.png";
+import history from "@/assets/screenshots/arvex/history.png";
+import invoice from "@/assets/screenshots/arvex/invoice.png";
+
+import createSession from "@/assets/screenshots/rpTimetables/create-session.png";
+import createdEvent from "@/assets/screenshots/rpTimetables/created-event.png";
+import detailsView from "@/assets/screenshots/rpTimetables/details.png";
+import eventPdf from "@/assets/screenshots/rpTimetables/event-pdf.png";
+import loadEvent from "@/assets/screenshots/rpTimetables/load-event.png";
+
+const arvexLongDescription = arvexDesc;
+const rpTimetableLongDescription = rpTimetableDesc;
+
+const buttonClasses: Record<string, string> = {
+  open_gallery: "gallery-button",
+  view_repo: "repo-button",
+};
+
+type ProjectLink = 
+    | { type: 'link'; label: string; url: string }
+    | { type: 'text'; label: string; content: string }
+    | { type: 'button'; label: string; action: string };
 interface Project {
     id: number;
     title: string;
@@ -10,174 +40,130 @@ interface Project {
     features: string[];
     challenges: string[];
     learned: string[];
-    links: { label: string; url: string }[];
+    links: ProjectLink[];
+    images: GalleryImage[];
 }
 
 const projects: Project[] = [
     {
         id: 1,
-        title: "E-Commerce Platform",
-        description: "A full-featured online store with cart and checkout.",
-        longDescription: "This is a comprehensive e-commerce solution built with React and Node.js. It features a fully functional shopping cart, secure checkout process using Stripe, user authentication, and an admin dashboard for product management. The application is designed to be scalable and performant, handling thousands of products with ease.",
-        tech: ["React", "Node.js", "MongoDB", "Stripe"],
+        title: "RacePlanner Timetables",
+        description: "An attempt to overcome Excel in creating and managing timetables for racing events.",
+        longDescription: rpTimetableLongDescription,
+        tech: ["C#", "ASP.NET Core", "PostgreSQL", "QuestPDF", "Docker", "AWS", "Nuxt", "Vue.js"],
         features: [
             "User authentication and authorization",
-            "Product search and filtering",
-            "Shopping cart and secure checkout",
-            "Admin dashboard for inventory management"
+            "Create and manage racing event timetables",
+            "Adjustable session timings to accommodate event delays",
+            "Load and save event timetables",
         ],
         challenges: [
-            "Implementing secure payment processing",
-            "Optimizing database queries for large product catalogs",
-            "Managing complex state for the shopping cart"
+            "Handling time calculations and adjustments",
+            "Creating an intuitive UI",
+            "Asynchronous updates for large datasets",
+            "AWS deployment",
         ],
         learned: [
-            "Deepened understanding of React hooks",
-            "Experience with Stripe API integration",
-            "Best practices for RESTful API design"
+            "Got better at time manipulation and calculations which I always found tricky",
+            "Improved frontend skills from a technical standpoint",
+            "Managed to successfully deploy it to AWS, all features worked as intended",
+            "Always maintain a clean project structure from the start, sadly I did not do that here, which is largely why the project was left unfinished",
+            "Importance of proper planning and scoping for solo projects - rushed in without a clear plan and ended up overwhelmed",
+        ],
+        images: [
+            { src: detailsView, title: "Setting up an event's details" },
+            { src: createSession, title: "Creating a session" },
+            { src: createdEvent, title: "Created sessions view" },
+            { src: eventPdf, title: "Generated PDF" },
+            { src: loadEvent, title: "Loading an existing event timetable" },
         ],
         links: [
-            { label: "Live Demo", url: "#" },
-            { label: "GitHub Repo", url: "#" }
+            { type: "button", label: "Open Gallery", action: "open_gallery" },
+            { type: "link", label: "GitHub Repo", url: "https://github.com/StewenE/RacePlanner" }
         ]
     },
     {
         id: 2,
-        title: "Task Management App",
-        description: "Organize your daily tasks efficiently.",
-        longDescription: "A productivity tool designed to help users manage their daily tasks and projects. It includes features like drag-and-drop task organization, deadline reminders, team collaboration tools, and progress tracking. Built with Vue.js and Firebase for real-time updates.",
-        tech: ["Vue.js", "Firebase", "Tailwind CSS"],
+        title: "Invoice Generator",
+        description: "A web application to create and manage invoices developed as a university project.",
+        longDescription: arvexLongDescription,
+        tech: ["C#", "ASP.NET Core", "PostgreSQL", "QuestPDF","Postman", "Docker", "AWS", "Nuxt", "Vue.js"],
         features: [
-            "Drag-and-drop task management",
-            "Real-time updates with Firebase",
-            "Team collaboration and assignment",
-            "Deadline notifications"
+            "User authentication and authorization",
+            "Create and manage company profiles",
+            "Add products/services with pricing",
+            "Create invoices with automatic tax and total calculations",
         ],
         challenges: [
-            "Synchronizing state across multiple users in real-time",
-            "Implementing intuitive drag-and-drop interactions",
-            "Designing a responsive UI for mobile devices"
+            "Understanding Git (first team project)",
+            "CI/CD pipeline setup for automated testing and deployment",
+            "Learning JavaScript and frontend development from scratch",
+            "Managing a larger-scale application structure"
         ],
         learned: [
-            "Mastery of Vue.js reactivity system",
-            "Firebase Firestore data modeling",
-            "Advanced CSS layout techniques"
+            "Familiarity with frontend development using Nuxt and Vue.js",
+            "Authentication using JWT",
+            "Implementing a library like QuestPDF",
+            "Dockersizing and AWS deployment"
+        ],
+        images: [
+            { src: addCompany, title: "Adding a Company" },
+            { src: addProduct, title: "Adding a Product" },
+            { src: companyView, title: "Company View" },
+            { src: createInvoice1, title: "Creating an Invoice - Filling out details" },
+            { src: createInvoice2, title: "Creating an Invoice - Selecting products" },
+            { src: history, title: "Invoice History" },
+            { src: invoice, title: "Generated Invoice PDF" }
         ],
         links: [
-            { label: "Live Demo", url: "#" },
-            { label: "GitHub Repo", url: "#" }
+            { type: "button", label: "Open Gallery", action: "open_gallery" }
         ]
     },
-    {
-        id: 3,
-        title: "Weather Dashboard",
-        description: "Real-time weather updates for any location.",
-        longDescription: "An interactive weather dashboard that provides real-time weather data, forecasts, and historical weather information. It integrates with multiple weather APIs to ensure accuracy. Users can save their favorite locations and view detailed weather metrics such as humidity, wind speed, and UV index.",
-        tech: ["React", "OpenWeatherMap API", "Chart.js"],
-        features: [
-            "Real-time weather data visualization",
-            "Location search and favorites",
-            "5-day weather forecast",
-            "Interactive charts for temperature trends"
-        ],
-        challenges: [
-            "Handling API rate limits and errors",
-            "Visualizing complex data sets with Chart.js",
-            "Managing asynchronous data fetching"
-        ],
-        learned: [
-            "Effective use of third-party APIs",
-            "Data visualization techniques",
-            "Error handling in React applications"
-        ],
-        links: [
-            { label: "Live Demo", url: "#" },
-            { label: "GitHub Repo", url: "#" }
-        ]
-    },
-    {
-        id: 4,
-        title: "Portfolio Website",
-        description: "A personal portfolio to showcase skills and projects.",
-        longDescription: "A modern, responsive portfolio website designed to showcase professional skills and projects. It features a clean design, smooth animations, and a contact form. Built with Next.js and styled with Tailwind CSS for optimal performance and design flexibility.",
-        tech: ["Next.js", "Tailwind CSS", "Framer Motion"],
-        features: [
-            "Responsive design for all devices",
-            "Smooth page transitions and animations",
-            "Contact form with email integration",
-            "Dynamic project showcase"
-        ],
-        challenges: [
-            "Creating a unique and personal design",
-            "Optimizing performance and SEO",
-            "Implementing complex animations"
-        ],
-        learned: [
-            "Next.js routing and server-side rendering",
-            "Advanced Tailwind CSS customization",
-            "Animation libraries like Framer Motion"
-        ],
-        links: [
-            { label: "Live Demo", url: "#" },
-            { label: "GitHub Repo", url: "#" }
-        ]
-    },
-    {
-        id: 5,
-        title: "Social Media Analytics",
-        description: "Analyze social media performance metrics.",
-        longDescription: "A powerful analytics tool for social media managers. It aggregates data from various platforms like Twitter, Facebook, and Instagram to provide comprehensive insights into audience engagement, post performance, and follower growth. Includes visual reports and exportable data.",
-        tech: ["Python", "Django", "D3.js"],
-        features: [
-            "Multi-platform data aggregation",
-            "Interactive data visualization dashboards",
-            "Automated report generation",
-            "Trend analysis and forecasting"
-        ],
-        challenges: [
-            "Integrating with multiple social media APIs",
-            "Processing large volumes of data efficiently",
-            "Creating intuitive data visualizations"
-        ],
-        learned: [
-            "Django backend development",
-            "Data processing with Python",
-            "Creating custom visualizations with D3.js"
-        ],
-        links: [
-            { label: "Live Demo", url: "#" },
-            { label: "GitHub Repo", url: "#" }
-        ]
-    },
+    
 ];
 
 export const ProjectsSection = ({ onProjectSelect }: { onProjectSelect?: (isSelected: boolean) => void }) => {
     const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+
+    const [isGalleryOpen, setIsGalleryOpen] = useState(false);
+    const [galleryImages, setGalleryImages] = useState<GalleryImage[]>([]);
 
     const handleProjectSelect = (project: Project | null) => {
         setSelectedProject(project);
         onProjectSelect?.(!!project);
     };
 
+    const handleLinkAction = (action: string, project: Project) => {
+        if (action === 'open_gallery') {
+            if (project.images && project.images.length > 0) {
+                setGalleryImages(project.images);
+                setIsGalleryOpen(true);
+            } else {
+                alert("No images available for this project yet.");
+            }
+        }
+    };
+
     if (selectedProject) {
         return (
             <section className="p-4 md:p-6 lg:p-8 animate-fade-in">
-              <></>
+                <ImageGalleryModal 
+                    isOpen={isGalleryOpen} 
+                    onClose={() => setIsGalleryOpen(false)}
+                    images={galleryImages}
+                    title={selectedProject.title}
+                />
                 <button 
                     onClick={() => handleProjectSelect(null)}
-                    className="mb-6 px-4 py-2 nav-button flex items-center gap-2"
+                    className="mb-2 px-4 py-2 nav-button flex items-center gap-2"
                 >
                   <ChevronLeft className="h-5 w-5" />
                     Back to Projects
                 </button>
                 <div className="p-6 md:p-8">
                     <h1 className="text-3xl md:text-4xl font-bold mb-4">{selectedProject.title}</h1>
-                    <p className="text-lg text-foreground/90 leading-relaxed whitespace-pre-line mb-6">
-                        {selectedProject.longDescription}
-                    </p>
-                    
+                    <h2 className="text-2xl text-(--card-primary) mb-3">{selectedProject.description}</h2>
                     <div className="mb-8">
-                        <h3 className="text-xl font-semibold mb-3">Tech Stack</h3>
                         <div className="flex flex-wrap gap-2">
                             {selectedProject.tech.map((tech, idx) => (
                                 <span key={idx} className="tech-badge">
@@ -186,6 +172,9 @@ export const ProjectsSection = ({ onProjectSelect }: { onProjectSelect?: (isSele
                             ))}
                         </div>
                     </div>
+                    <p className="text-lg text-foreground/90 leading-relaxed whitespace-pre-line mb-6">
+                        {selectedProject.longDescription}
+                    </p>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div className="p-4">
@@ -216,19 +205,40 @@ export const ProjectsSection = ({ onProjectSelect }: { onProjectSelect?: (isSele
                         </div>
 
                         <div className="p-4">
-                            <h3 className="text-xl font-semibold mb-3">Links</h3>
+                            <h3 className="text-xl font-semibold mb-3">Resources</h3>
                             <ul className="list-disc list-inside space-y-2 text-foreground/90">
                                 {selectedProject.links.map((link, idx) => (
-                                    <li key={idx}>
-                                        <a 
-                                            href={link.url} 
-                                            className="text-accent hover:underline hover:text-accent/80 transition-colors"
-                                            target="_blank" 
-                                            rel="noopener noreferrer"
-                                        >
-                                            {link.label}
-                                        </a>
-                                    </li>
+                                    <div key={idx}>
+                                        {link.type === 'link' && (
+                                            <a
+                                                href={link.url}
+                                                target="_blank"
+                                                rel="noreferrer"
+                                                className={
+                                                    link.label === "GitHub Repo"
+                                                        ? "repo-button inline-flex"
+                                                        : "text-accent hover:underline"
+                                                }
+                                            >
+                                                {link.label}
+                                            </a>
+                                        )}
+
+                                        {link.type === 'text' && (
+                                            <span className="text-gray-500">
+                                                {link.label}: {link.content}
+                                            </span>
+                                        )}
+
+                                        {link.type === 'button' && (
+                                            <button 
+                                                onClick={() => handleLinkAction(link.action, selectedProject)}
+                                                className={buttonClasses[link.action] || "default-button"}
+                                            >
+                                                {link.label}
+                                            </button>
+                                        )}
+                                    </div>
                                 ))}
                             </ul>
                         </div>
