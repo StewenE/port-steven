@@ -218,7 +218,7 @@
 
 
 @utility projects-grid {
-  @apply border-2 border-border rounded-lg p-6 bg-card/40 hover:scale-105 hover:shadow-lg hover:border-(--card-primary) transition-all duration-300 flex flex-col h-full
+  @apply border-2 border-border p-6 bg-card/40 hover:scale-105 hover:shadow-lg hover:border-(--card-primary) transition-all duration-300 flex flex-col h-full
 }
 
 
