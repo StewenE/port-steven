@@ -65,7 +65,7 @@ export const TopBar = ({ activeSection, onNavigate }: TopBarProps) => {
 
             <div className={cn(
                 "mobile-menu lg:hidden",
-                isMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+                isMenuOpen ? "opacity-95 pointer-events-auto" : "opacity-0 pointer-events-none"
                 )}
             >
                 <div className="flex flex-col space-y-8 text-xl">
