@@ -46,7 +46,7 @@ export const Home = () => {
                         activeSection={activeSection} 
                         onNavigate={handleNavigate}
                     />
-                    <div className="relative h-[calc(100vh-var(--nav-height))] custom-scroll overflow-y-auto pt-8 lg:pt-0 border-r border-border bg-background pr-4 lg:pr-6">
+                    <div className="relative h-[calc(100vh-var(--nav-height))] custom-scroll overflow-y-auto pt-8 lg:pt-0 lg:border-r border-border bg-background pr-4 lg:pr-6">
                         <div key={activeSection}>
                             {renderSection()}
                             {!isProjectSelected && (

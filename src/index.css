@@ -55,7 +55,7 @@
 
     --blue-accent: #006d77;
 
-    --top-bar-bg: #fafae7;
+    --top-bar-bg: rgba(250, 250, 231, 0.92);
 
     --border: #909090;
   }
@@ -84,7 +84,7 @@
     --hover-text: #ffffff;
     --active-text: #ffffffd0;
 
-    --top-bar-bg: #00000057;
+    --top-bar-bg: rgba(39, 39, 39, 0.65);
 
     --border: #909090;
   }
