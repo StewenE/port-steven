@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { ChevronLeft } from "lucide-react";
 import { arvexDesc } from "@/data/descriptions/arveX.ts";
+import { rpTimetableDesc } from "@/data/descriptions/rpTimetable.ts";
 import { ImageGalleryModal } from "@/components/ImageGalleryModal";
 import type { GalleryImage } from "@/components/ImageGalleryModal";
 
@@ -12,7 +13,19 @@ import createInvoice2 from "@/assets/screenshots/arvex/create-invoice-2.png";
 import history from "@/assets/screenshots/arvex/history.png";
 import invoice from "@/assets/screenshots/arvex/invoice.png";
 
+import createSession from "@/assets/screenshots/rpTimetables/create-session.png";
+import createdEvent from "@/assets/screenshots/rpTimetables/created-event.png";
+import detailsView from "@/assets/screenshots/rpTimetables/details.png";
+import eventPdf from "@/assets/screenshots/rpTimetables/event-pdf.png";
+import loadEvent from "@/assets/screenshots/rpTimetables/load-event.png";
+
 const arvexLongDescription = arvexDesc;
+const rpTimetableLongDescription = rpTimetableDesc;
+
+const buttonClasses: Record<string, string> = {
+  open_gallery: "gallery-button",
+  view_repo: "repo-button",
+};
 
 type ProjectLink = 
     | { type: 'link'; label: string; url: string }
@@ -34,6 +47,43 @@ interface Project {
 const projects: Project[] = [
     {
         id: 1,
+        title: "RacePlanner Timetables",
+        description: "An attempt to overcome Excel in creating and managing timetables for racing events.",
+        longDescription: rpTimetableLongDescription,
+        tech: ["C#", "ASP.NET Core", "PostgreSQL", "QuestPDF", "Docker", "AWS", "Nuxt", "Vue.js"],
+        features: [
+            "User authentication and authorization",
+            "Create and manage racing event timetables",
+            "Adjustable session timings to accommodate event delays",
+            "Load and save event timetables",
+        ],
+        challenges: [
+            "Handling time calculations and adjustments",
+            "Creating an intuitive UI",
+            "Asynchronous updates for large datasets",
+            "AWS deployment",
+        ],
+        learned: [
+            "Got better at time manipulation and calculations which I always found tricky",
+            "Improved frontend skills from a technical standpoint",
+            "Managed to successfully deploy it to AWS, all features worked as intended",
+            "Always maintain a clean project structure from the start, sadly I did not do that here, which is largely why the project was left unfinished",
+            "Importance of proper planning and scoping for solo projects - rushed in without a clear plan and ended up overwhelmed",
+        ],
+        images: [
+            { src: detailsView, title: "Setting up an event's details" },
+            { src: createSession, title: "Creating a session" },
+            { src: createdEvent, title: "Created sessions view" },
+            { src: eventPdf, title: "Generated PDF" },
+            { src: loadEvent, title: "Loading an existing event timetable" },
+        ],
+        links: [
+            { type: "button", label: "Open Gallery", action: "open_gallery" },
+            { type: "link", label: "GitHub Repo", url: "https://github.com/StewenE/RacePlanner" }
+        ]
+    },
+    {
+        id: 2,
         title: "Invoice Generator",
         description: "A web application to create and manage invoices developed as a university project.",
         longDescription: arvexLongDescription,
@@ -105,19 +155,15 @@ export const ProjectsSection = ({ onProjectSelect }: { onProjectSelect?: (isSele
                 />
                 <button 
                     onClick={() => handleProjectSelect(null)}
-                    className="mb-6 px-4 py-2 nav-button flex items-center gap-2"
+                    className="mb-2 px-4 py-2 nav-button flex items-center gap-2"
                 >
                   <ChevronLeft className="h-5 w-5" />
                     Back to Projects
                 </button>
                 <div className="p-6 md:p-8">
                     <h1 className="text-3xl md:text-4xl font-bold mb-4">{selectedProject.title}</h1>
-                    <p className="text-lg text-foreground/90 leading-relaxed whitespace-pre-line mb-6">
-                        {selectedProject.longDescription}
-                    </p>
-                    
+                    <h2 className="text-2xl text-(--card-primary) mb-3">{selectedProject.description}</h2>
                     <div className="mb-8">
-                        <h3 className="text-xl font-semibold mb-3">Tech Stack</h3>
                         <div className="flex flex-wrap gap-2">
                             {selectedProject.tech.map((tech, idx) => (
                                 <span key={idx} className="tech-badge">
@@ -126,6 +172,9 @@ export const ProjectsSection = ({ onProjectSelect }: { onProjectSelect?: (isSele
                             ))}
                         </div>
                     </div>
+                    <p className="text-lg text-foreground/90 leading-relaxed whitespace-pre-line mb-6">
+                        {selectedProject.longDescription}
+                    </p>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div className="p-4">
@@ -161,7 +210,16 @@ export const ProjectsSection = ({ onProjectSelect }: { onProjectSelect?: (isSele
                                 {selectedProject.links.map((link, idx) => (
                                     <div key={idx}>
                                         {link.type === 'link' && (
-                                            <a href={link.url} target="_blank" rel="noreferrer" className="text-accent hover:underline">
+                                            <a
+                                                href={link.url}
+                                                target="_blank"
+                                                rel="noreferrer"
+                                                className={
+                                                    link.label === "GitHub Repo"
+                                                        ? "repo-button inline-flex"
+                                                        : "text-accent hover:underline"
+                                                }
+                                            >
                                                 {link.label}
                                             </a>
                                         )}
@@ -175,7 +233,7 @@ export const ProjectsSection = ({ onProjectSelect }: { onProjectSelect?: (isSele
                                         {link.type === 'button' && (
                                             <button 
                                                 onClick={() => handleLinkAction(link.action, selectedProject)}
-                                                className="gallery-button"
+                                                className={buttonClasses[link.action] || "default-button"}
                                             >
                                                 {link.label}
                                             </button>

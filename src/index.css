@@ -222,7 +222,19 @@
   
   &:hover {
     color: var(--hover-text);
-    border-radius: 10px;
+    border-radius: 7px;
+    cursor: pointer;
+  }
+}
+
+@utility repo-button {
+  @apply bg-black/70 text-white hover:border-white transition-all duration-300 flex items-center gap-2 px-3 py-1;
+  border: 0.13rem solid black;
+  border-radius: 0.13rem;
+  
+  &:hover {
+    background-color: black;
+    border-radius: 7px;
     cursor: pointer;
   }
 }
