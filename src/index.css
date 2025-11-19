@@ -136,17 +136,17 @@
   }
   @media (width >= 1024px) {
     width: 80%;
-    --container-x: 1.5rem;
-    max-width: min(1200px, calc(100vw - 2rem));
+    --container-x: clamp(0.75rem, 1.5vw, 1.25rem);
+    max-width: min(1350px, calc(100vw - 1rem));
   }
   @media (width >= 1280px) {
-    max-width: min(1400px, calc(100vw - 2rem));
+    max-width: min(1550px, calc(100vw - 1rem));
   }
   @media (width >= 1400px) {
-    max-width: min(1500px, calc(100vw - 2rem));
+    max-width: min(1700px, calc(100vw - 1rem));
   }
   @media (width >= 1600px) {
-    max-width: 1600px;
+    max-width: min(1850px, calc(100vw - 1rem));
   }
   @media (width >= 1920px) {
     max-width: 1920px;
@@ -290,6 +290,7 @@
 .custom-scroll {
   scrollbar-width: thin;
   scrollbar-color: var(--border) var(--background);
+  scrollbar-gutter: stable both-edges;
 }
 
 .custom-scroll::-webkit-scrollbar {
