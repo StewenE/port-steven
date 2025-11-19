@@ -1,6 +1,13 @@
 import { useState } from "react";
 import { ChevronLeft } from "lucide-react";
+import { arvexDesc } from "@/data/descriptions/arveX.ts";
 
+const arvexLongDescription = arvexDesc;
+
+type ProjectLink = 
+    | { type: 'link'; label: string; url: string }
+    | { type: 'text'; label: string; content: string }
+    | { type: 'button'; label: string; action: string };
 interface Project {
     id: number;
     title: string;
@@ -10,35 +17,36 @@ interface Project {
     features: string[];
     challenges: string[];
     learned: string[];
-    links: { label: string; url: string }[];
+    links: ProjectLink[];
 }
 
 const projects: Project[] = [
     {
         id: 1,
-        title: "E-Commerce Platform",
-        description: "A full-featured online store with cart and checkout.",
-        longDescription: "This is a comprehensive e-commerce solution built with React and Node.js. It features a fully functional shopping cart, secure checkout process using Stripe, user authentication, and an admin dashboard for product management. The application is designed to be scalable and performant, handling thousands of products with ease.",
-        tech: ["React", "Node.js", "MongoDB", "Stripe"],
+        title: "Invoice Generator",
+        description: "A web application to create and manage invoices developed as a university project.",
+        longDescription: arvexLongDescription,
+        tech: ["C#", "ASP.NET Core", "PostgreSQL", "QuestPDF","Postman", "Docker", "AWS", "Nuxt", "Vue.js"],
         features: [
             "User authentication and authorization",
-            "Product search and filtering",
-            "Shopping cart and secure checkout",
-            "Admin dashboard for inventory management"
+            "Create and manage company profiles",
+            "Add products/services with pricing",
+            "Create invoices with automatic tax and total calculations",
         ],
         challenges: [
-            "Implementing secure payment processing",
-            "Optimizing database queries for large product catalogs",
-            "Managing complex state for the shopping cart"
+            "Understanding Git (first team project)",
+            "CI/CD pipeline setup for automated testing and deployment",
+            "Learning JavaScript and frontend development from scratch",
+            "Managing a larger-scale application structure"
         ],
         learned: [
-            "Deepened understanding of React hooks",
-            "Experience with Stripe API integration",
-            "Best practices for RESTful API design"
+            "Familiarity with frontend development using Nuxt and Vue.js",
+            "Authentication using JWT",
+            "Implementing a library like QuestPDF",
+            "Dockersizing and AWS deployment"
         ],
         links: [
-            { label: "Live Demo", url: "#" },
-            { label: "GitHub Repo", url: "#" }
+            { type: "button", label: "Open Gallery", action: "open_gallery" }
         ]
     },
     {
@@ -64,8 +72,7 @@ const projects: Project[] = [
             "Advanced CSS layout techniques"
         ],
         links: [
-            { label: "Live Demo", url: "#" },
-            { label: "GitHub Repo", url: "#" }
+            { type: "text", label: "No repo :(", content: "Private" }
         ]
     },
     {
@@ -91,8 +98,7 @@ const projects: Project[] = [
             "Error handling in React applications"
         ],
         links: [
-            { label: "Live Demo", url: "#" },
-            { label: "GitHub Repo", url: "#" }
+            { type: "text", label: "No repo :(", content: "Private" }
         ]
     },
     {
@@ -118,8 +124,7 @@ const projects: Project[] = [
             "Animation libraries like Framer Motion"
         ],
         links: [
-            { label: "Live Demo", url: "#" },
-            { label: "GitHub Repo", url: "#" }
+            { type: "text", label: "No repo :(", content: "Private" }
         ]
     },
     {
@@ -145,8 +150,7 @@ const projects: Project[] = [
             "Creating custom visualizations with D3.js"
         ],
         links: [
-            { label: "Live Demo", url: "#" },
-            { label: "GitHub Repo", url: "#" }
+            { type: "text", label: "No repo :(", content: "Private" }
         ]
     },
 ];
@@ -157,6 +161,12 @@ export const ProjectsSection = ({ onProjectSelect }: { onProjectSelect?: (isSele
     const handleProjectSelect = (project: Project | null) => {
         setSelectedProject(project);
         onProjectSelect?.(!!project);
+    };
+
+    const handleLinkAction = (action: string) => {
+        if (action === 'open_gallery') {
+            alert("Open gallery"); 
+        }
     };
 
     if (selectedProject) {
@@ -220,14 +230,26 @@ export const ProjectsSection = ({ onProjectSelect }: { onProjectSelect?: (isSele
                             <ul className="list-disc list-inside space-y-2 text-foreground/90">
                                 {selectedProject.links.map((link, idx) => (
                                     <li key={idx}>
-                                        <a 
-                                            href={link.url} 
-                                            className="text-accent hover:underline hover:text-accent/80 transition-colors"
-                                            target="_blank" 
-                                            rel="noopener noreferrer"
-                                        >
-                                            {link.label}
-                                        </a>
+                                        {link.type === 'link' && (
+                                            <a href={link.url} target="_blank" rel="noreferrer" className="text-accent hover:underline">
+                                                {link.label}
+                                            </a>
+                                        )}
+
+                                        {link.type === 'text' && (
+                                            <span className="text-gray-500">
+                                                {link.label}: {link.content}
+                                            </span>
+                                        )}
+
+                                        {link.type === 'button' && (
+                                            <button 
+                                                onClick={() => handleLinkAction(link.action)}
+                                                className="text-primary hover:text-primary/80 underline decoration-dotted cursor-pointer text-left"
+                                            >
+                                                {link.label}
+                                            </button>
+                                        )}
                                     </li>
                                 ))}
                             </ul>
