@@ -22,7 +22,7 @@ export const Home = () => {
     const renderSection = () => {
         switch (activeSection) {
             case "home":
-                return <HomeSection />;
+                return <HomeSection onNavigate={handleNavigate} />;
             case "about":
                 return <AboutSection />;
             case "skills":
@@ -36,7 +36,7 @@ export const Home = () => {
             case "contact":
                 return <ContactSection />;
             default:
-                return <HomeSection />;
+                return <HomeSection onNavigate={handleNavigate} />;
         }
     };
 

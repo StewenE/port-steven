@@ -79,7 +79,7 @@ const projects: Project[] = [
         ],
         links: [
             { type: "button", label: "Open Gallery", action: "open_gallery" },
-            { type: "link", label: "GitHub Repo", url: "https://github.com/StewenE/RacePlanner" }
+            { type: "link", label: "GitHub", url: "https://github.com/StewenE/RacePlanner" }
         ]
     },
     {
@@ -215,7 +215,7 @@ export const ProjectsSection = ({ onProjectSelect }: { onProjectSelect?: (isSele
                                                 target="_blank"
                                                 rel="noreferrer"
                                                 className={
-                                                    link.label === "GitHub Repo"
+                                                    link.label === "GitHub"
                                                         ? "repo-button inline-flex"
                                                         : "text-accent hover:underline"
                                                 }
