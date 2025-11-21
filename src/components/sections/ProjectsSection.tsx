@@ -146,7 +146,7 @@ export const ProjectsSection = ({ onProjectSelect }: { onProjectSelect?: (isSele
 
     if (selectedProject) {
         return (
-            <section className="p-4 md:p-6 lg:p-8 animate-fade-in">
+            <section className="md:p-6 lg:p-8 animate-fade-in">
                 <ImageGalleryModal 
                     isOpen={isGalleryOpen} 
                     onClose={() => setIsGalleryOpen(false)}
@@ -177,7 +177,7 @@ export const ProjectsSection = ({ onProjectSelect }: { onProjectSelect?: (isSele
                     </p>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div className="p-4">
+                        <div className="p-2">
                             <h3 className="text-xl font-semibold mb-3">Features</h3>
                             <ul className="list-disc list-inside space-y-2 text-foreground/90">
                                 {selectedProject.features.map((feature, idx) => (

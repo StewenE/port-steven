@@ -35,7 +35,7 @@ export const Home = () => {
     };
 
     return (
-        <div className="min-h-1000 bg-background text-foreground overflow-x-hidden ">
+        <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
             <TopBar 
                 activeSection={activeSection}
                 onNavigate={handleNavigate}
@@ -46,7 +46,7 @@ export const Home = () => {
                         activeSection={activeSection} 
                         onNavigate={handleNavigate}
                     />
-                    <div className="relative h-[calc(100vh-var(--nav-height))] custom-scroll overflow-y-auto pt-8 lg:pt-0 lg:border-r border-border bg-background pr-4 lg:pr-6">
+                    <div className="relative min-h-[calc(100vh-var(--nav-height))] pt-8 lg:pt-0 lg:border-r border-border bg-background pr-4 lg:pr-6">
                         <div key={activeSection}>
                             {renderSection()}
                             {!isProjectSelected && (
