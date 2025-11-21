@@ -18,9 +18,11 @@ import createdEvent from "@/assets/screenshots/rpTimetables/created-event.png";
 import detailsView from "@/assets/screenshots/rpTimetables/details.png";
 import eventPdf from "@/assets/screenshots/rpTimetables/event-pdf.png";
 import loadEvent from "@/assets/screenshots/rpTimetables/load-event.png";
+import { portfolioDesc } from "@/data/descriptions/portfolio";
 
 const arvexLongDescription = arvexDesc;
 const rpTimetableLongDescription = rpTimetableDesc;
+const portfolioLongDescription = portfolioDesc;
 
 const buttonClasses: Record<string, string> = {
   open_gallery: "gallery-button",
@@ -41,10 +43,36 @@ interface Project {
     challenges: string[];
     learned: string[];
     links: ProjectLink[];
-    images: GalleryImage[];
+    images?: GalleryImage[];
 }
 
 const projects: Project[] = [
+    {
+        id: 3,
+        title: "Portfolio Website",
+        description: "You're looking at it!",
+        longDescription: portfolioLongDescription,
+        tech: ["React", "TypeScript", "Tailwind CSS", "Vercel"],
+        features: [
+            "Navigable sections showcasing my skills, projects, and experience",
+            "Detailed descriptions of projects",
+            "Links to social profiles and repositories",
+        ],
+        challenges: [
+            "Initial React learning curve",
+            "Making a visually appealing and simple design; not a strictly practical design",
+            "Layouts of different screen sizes, adjusting responsiveness",
+        ],
+        learned: [
+            "React fundamentals; still a lot to learn here (backend integration)",
+            "Screen size responsiveness",
+            "Polished my CSS and Tailwind skills",
+            "Simple Vercel deployment",
+        ],
+        links: [
+            { type: "link", label: "GitHub", url: "https://github.com/StewenE/port-steven" }
+        ]
+    },
     {
         id: 1,
         title: "RacePlanner Timetables",
@@ -79,7 +107,7 @@ const projects: Project[] = [
         ],
         links: [
             { type: "button", label: "Open Gallery", action: "open_gallery" },
-            { type: "link", label: "GitHub Repo", url: "https://github.com/StewenE/RacePlanner" }
+            { type: "link", label: "GitHub", url: "https://github.com/StewenE/RacePlanner" }
         ]
     },
     {
@@ -215,7 +243,7 @@ export const ProjectsSection = ({ onProjectSelect }: { onProjectSelect?: (isSele
                                                 target="_blank"
                                                 rel="noreferrer"
                                                 className={
-                                                    link.label === "GitHub Repo"
+                                                    link.label === "GitHub"
                                                         ? "repo-button inline-flex"
                                                         : "text-accent hover:underline"
                                                 }
