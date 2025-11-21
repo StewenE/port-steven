@@ -1,6 +1,6 @@
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
-const sections = ["home", "about", "skills", "projects", "education", "contact"];
+const sections = ["home", "about", "skills", "projects", "education", "work", "contact"];
 
 interface NavigationButtonsProps {
     activeSection: string;

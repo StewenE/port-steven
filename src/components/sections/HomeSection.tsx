@@ -6,7 +6,7 @@ export const HomeSection = () => {
           Hi, I'm Steven. This is my portfolio website.
         </p>
         <p className="text-foreground/80 opacity-0 animate-fade-in-delay-2">
-          Navigate through the sections using the sidebar to learn more about my work, skills, and projects.
+          Navigate through the sections to learn more about my work, skills, and projects.
         </p>
       </section>
     );

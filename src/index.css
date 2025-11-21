@@ -240,6 +240,39 @@
   }
 }
 
+@utility raceplanner-button {
+  @apply text-foreground transition-all duration-300 flex items-center gap-2 px-3 py-1 font-medium;
+  background: #77e4c984;
+  border: 0.13rem solid #77e4c8;
+  border-radius: 0.13rem;
+  
+  &:hover {
+    color: var(--hover-text);
+    background: color-mix(in srgb, #77e4c8 80%, black 20%);
+    border-radius: 7px;
+    cursor: pointer;
+  }
+}
+
+@utility instagram-button {
+  @apply text-white transition-all duration-300 flex items-center gap-2 px-3 py-1 font-medium;
+  background: #dd2a7b94;
+  border: 0.13rem solid #dd2a7b;
+  border-radius: 0.13rem;
+  
+  &:hover {
+    color: var(--hover-text);
+    background: color-mix(in srgb, #dd2a7b 80%, black 20%);
+    border-radius: 7px;
+    cursor: pointer;
+  }
+}
+
+@utility text-link {
+  @apply text-blue-400 hover:text-blue-600 font-medium underline underline-offset-2 transition-colors duration-300;
+  cursor: pointer;
+}
+
 
 @utility mobile-menu {
   @apply fixed inset-0 bg-background/95 backdrop-blur-md z-40 flex flex-col items-center justify-center transition-all duration-300;

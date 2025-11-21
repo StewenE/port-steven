@@ -1,11 +1,6 @@
-type EducationItem = {
-    period: string;
-    title: string;
-    institution: string;
-    details: string[];
-};
+import type { ExperienceItem } from "@/types";
 
-const education: EducationItem[] = [
+const education: ExperienceItem[] = [
     {
         period: "2023 - present",
         title: "B.Sc. Business Information Technology",
@@ -37,7 +32,7 @@ export const EducationSection = () => {
         </p>
         <p className="text-lg text-foreground/90 leading-relaxed whitespace-pre-line mb-6 opacity-0 animate-fade-in-delay-1">
             I always accompanied my studies with personal projects to apply my knowledge in practice. I believe that this individual work has been crucial for my growth and understanding of software development.
-            
+
         </p>
 
         <div className="space-y-8 opacity-0 animate-fade-in-delay-2 border-l-2 border-(--blue-accent)/40">
