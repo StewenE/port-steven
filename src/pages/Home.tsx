@@ -7,6 +7,7 @@ import { AboutSection } from "@/components/sections/AboutSection";
 import { SkillsSection } from "@/components/sections/SkillsSection";
 import { ProjectsSection } from "@/components/sections/ProjectsSection";
 import { ContactSection } from "@/components/sections/ContactSection";
+import { EducationSection } from "@/components/sections/EducationSection";
 
 export const Home = () => {
     const [activeSection, setActiveSection] = useState("home");
@@ -27,6 +28,8 @@ export const Home = () => {
                 return <SkillsSection />;
             case "projects":
                 return <ProjectsSection onProjectSelect={setIsProjectSelected} />;
+            case "education":
+                return <EducationSection />;
             case "contact":
                 return <ContactSection />;
             default:
