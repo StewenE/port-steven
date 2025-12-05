@@ -3,7 +3,7 @@ import { ChevronLeft } from "lucide-react";
 import { arvexDesc } from "@/data/descriptions/arveX.ts";
 import { rpTimetableDesc } from "@/data/descriptions/rpTimetable.ts";
 import { ImageGalleryModal } from "@/components/ImageGalleryModal";
-import type { GalleryImage } from "@/components/ImageGalleryModal";
+import type { GalleryImage, Project } from "@/types/Project";
 
 import addCompany from "@/assets/screenshots/arvex/add-company.png";
 import addProduct from "@/assets/screenshots/arvex/add-product.png";
@@ -28,24 +28,6 @@ const buttonClasses: Record<string, string> = {
   open_gallery: "gallery-button",
   view_repo: "repo-button",
 };
-
-type ProjectLink = 
-    | { type: 'link'; label: string; url: string }
-    | { type: 'text'; label: string; content: string }
-    | { type: 'button'; label: string; action: string };
-interface Project {
-    id: number;
-    title: string;
-    description: string;
-    longDescription: string;
-    tech: string[];
-    features: string[];
-    challenges: string[];
-    learned: string[];
-    links: ProjectLink[];
-    images?: GalleryImage[];
-    timeToDevelop?: string;
-}
 
 const projects: Project[] = [
     {

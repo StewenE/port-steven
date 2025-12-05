@@ -1,17 +1,6 @@
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
 import { useEffect, useState, useCallback } from "react";
-
-interface ImageGalleryModalProps {
-  isOpen: boolean;
-  onClose: () => void;
-  images: GalleryImage[];
-  title?: string;
-}
-
-export type GalleryImage = {
-    src: string;
-    title: string;
-}
+import type { ImageGalleryModalProps } from "@/types/Project";
 
 export const ImageGalleryModal = ({ isOpen, onClose, images, title }: ImageGalleryModalProps) => {
   const [currentIndex, setCurrentIndex] = useState(0);
