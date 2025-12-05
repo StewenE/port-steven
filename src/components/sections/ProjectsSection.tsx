@@ -44,6 +44,7 @@ interface Project {
     learned: string[];
     links: ProjectLink[];
     images?: GalleryImage[];
+    timeToDevelop?: string;
 }
 
 const projects: Project[] = [
@@ -71,7 +72,8 @@ const projects: Project[] = [
         ],
         links: [
             { type: "link", label: "GitHub", url: "https://github.com/StewenE/port-steven" }
-        ]
+        ],
+        timeToDevelop: "22 hours"
     },
     {
         id: 1,
@@ -108,7 +110,8 @@ const projects: Project[] = [
         links: [
             { type: "button", label: "Open Gallery", action: "open_gallery" },
             { type: "link", label: "GitHub", url: "https://github.com/StewenE/RacePlanner" }
-        ]
+        ],
+        timeToDevelop: "110 hours"
     },
     {
         id: 2,
@@ -145,7 +148,8 @@ const projects: Project[] = [
         ],
         links: [
             { type: "button", label: "Open Gallery", action: "open_gallery" }
-        ]
+        ],
+        timeToDevelop: "100 hours"
     },
     
 ];
@@ -189,7 +193,15 @@ export const ProjectsSection = ({ onProjectSelect }: { onProjectSelect?: (isSele
                     Back to Projects
                 </button>
                 <div className="p-6 md:p-8">
-                    <h1 className="text-3xl md:text-4xl font-bold mb-4">{selectedProject.title}</h1>
+                    <div className="flex flex-col gap-2 lg:grid lg:grid-cols-2 lg:justify-between">
+                        <h1 className="text-3xl md:text-4xl font-bold">{selectedProject.title}</h1>
+                        <span
+                            className="text-lg text-foreground lg:self-end md:self-start lg:justify-self-end text-right mb-2"
+                        >
+                            Development time: {selectedProject.timeToDevelop}
+                        </span>
+                    </div>
+                    
                     <h2 className="text-2xl text-(--card-primary) mb-3">{selectedProject.description}</h2>
                     <div className="mb-8">
                         <div className="flex flex-wrap gap-2">
