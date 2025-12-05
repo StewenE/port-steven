@@ -5,7 +5,7 @@ import { NavigationButtons } from "@/components/NavigationButtons";
 import { HomeSection } from "@/components/sections/HomeSection";
 import { AboutSection } from "@/components/sections/AboutSection";
 import { SkillsSection } from "@/components/sections/SkillsSection";
-import { ProjectsSection } from "@/components/sections/projects-section/ProjectsSection";
+import { ProjectsSection } from "@/components/sections/ProjectsSection";
 import { ContactSection } from "@/components/sections/ContactSection";
 import { EducationSection } from "@/components/sections/EducationSection";
 import { WorkSection } from "@/components/sections/WorkSection";

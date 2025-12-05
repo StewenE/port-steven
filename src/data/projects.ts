@@ -13,8 +13,8 @@ import eventPdf from "@/assets/screenshots/rpTimetables/event-pdf.png";
 import loadEvent from "@/assets/screenshots/rpTimetables/load-event.png";
 
 import { portfolioDesc } from "@/data/descriptions/portfolio";
-import { arvexDesc } from "@/data/descriptions/arveX.ts";
-import { rpTimetableDesc } from "@/data/descriptions/rpTimetable.ts";
+import { arvexDesc } from "@/data/descriptions/arveX";
+import { rpTimetableDesc } from "@/data/descriptions/rpTimetable";
 import type { Project } from "@/types/Project";
 
 const arvexLongDescription = arvexDesc;
