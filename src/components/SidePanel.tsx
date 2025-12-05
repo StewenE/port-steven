@@ -1,4 +1,5 @@
 import { cn } from "@/lib/utils";
+import CV from "@/assets/CV.pdf";
 
 const navItems = [
     { name: "Home", id: "home" },
@@ -32,6 +33,12 @@ export const SidePanel = ({ activeSection, onNavigate }: SidePanelProps) => {
               {item.name}
             </button>
           ))}
+          <button
+            onClick={() => window.open(CV, "_blank")}
+            className="nav-item text-left"
+          >
+            Resume
+          </button>
         </nav>
       </aside>
     );
